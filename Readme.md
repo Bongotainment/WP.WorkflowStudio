@@ -44,7 +44,7 @@ Workflows mit erweiterten Eigenschaften werden in WorkflowStudio mit einer ander
 ### Benutzeroberfläche
 Die Navigation zu den verschiedenen Workflowkategorien befindet sich auf der rechten Seite und orientiert sich an der Unterteilung, die sich auch in der JTL WaWi findet. Die Kategorien sind farblich unterschiedlich gestaltet, um eine Unterscheidung zwischen den Events in der Visualisierungsansicht im linken Bereich der Anwendung zu ermöglichen.
 
-![ArticleEvents](/images/WorkflowStudioMenu.png)
+![ArticleEvents](/images/WorkflowstudioMenu.png)
 
 ### Warnung
 Bitte beachten Sie, dass Workflowstudio sich in einer sehr frühen Phase der Entwicklung befindet und den Beta-Status noch nicht verlassen hat. Wir weisen ausdrücklich darauf hin, dass es sich bei der genutzten Beta-Version um ein unfertiges Softwareprodukt handelt. Wir übernehmen daher keine Haftung für mögliche Fehlfunktionen der Software und hieraus resultierende Schäden.
