@@ -1,7 +1,7 @@
 # WP.WorkflowStudio - Deutsch
 
 ## Ein Workflow visualisierungstool
-[DOWNLOAD - BETA](/downloads/WorkflowStudio.zip)
+[DOWNLOAD - BETA](https://github.com/Bongotainment/WP.WorkflowStudio/raw/main/downloads/WorkflowStudio.zip)
 ![ArticleEvents](/images/articleevents_ws.png)
 
 
