@@ -1,0 +1,94 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:WP.WorkflowStudio.Desktop.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="450" d:DesignHeight="450"
+        Width="450"
+        Height="450"
+        CanResize="False"
+        Background="#232323"
+        x:Class="WP.WorkflowStudio.Desktop.Views.LoginWindow"
+        SystemDecorations="BorderOnly"
+        Title="LoginWindow"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        WindowStartupLocation="CenterOwner">
+    <Design.DataContext>
+        <viewModels:LoginWindowViewModel />
+    </Design.DataContext>
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Background="#009797" Margin="15,30,15,15">
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="48"
+                   Foreground="White">
+                Workflow Studio
+            </Label>
+        </Border>
+
+        <StackPanel Grid.Row="1" Margin="30,0,30,0" Spacing="10">
+            <TextBox
+                HorizontalAlignment="Stretch"
+                Text="{Binding SqlServerAddress}"
+                Watermark="Server Name" />
+            <TextBox
+                HorizontalAlignment="Stretch"
+                Text="{Binding DbName}"
+                Watermark="Datenbank" />
+            <TextBox
+                HorizontalAlignment="Stretch"
+                Text="{Binding DbUserName}"
+                Watermark="Benutzer" />
+            <TextBox
+                HorizontalAlignment="Stretch"
+                PasswordChar="*"
+                Text="{Binding DbPassword}"
+                Watermark="Passwort" />
+        </StackPanel>
+        <Button Grid.Row="2" HorizontalAlignment="Center" Margin="15"
+                Command="{Binding LoginClickedCommand}"
+                Background="#363636"
+                Foreground="White" IsDefault="True">
+            Anmelden
+        </Button>
+        <Grid Grid.Row="3" Grid.ShowGridLines="False" Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <!-- 0 -->
+                <ColumnDefinition Width="*" />
+                <!-- B1 -->
+                <ColumnDefinition Width="15" />
+                <!-- 2 -->
+                <ColumnDefinition Width="Auto" />
+                <!-- B3 -->
+                <ColumnDefinition Width="15" />
+                <!-- 4 -->
+                <ColumnDefinition Width="Auto" />
+                <!-- B5 -->
+                <ColumnDefinition Width="15" />
+                <!-- 6 -->
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="4"
+                    Background="#363636"
+                    Foreground="White"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Command="{Binding CloseClickedCommand}">
+                Schließen
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

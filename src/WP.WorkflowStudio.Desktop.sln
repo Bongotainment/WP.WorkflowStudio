@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP.WorkflowStudio.Desktop", "WP.WorkflowStudio.Desktop\WP.WorkflowStudio.Desktop.csproj", "{C28EEA6E-4A40-48F8-ABF1-5986FE26A41A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP.WorkflowStudio.Core", "WP.WorkflowStudio.Core\WP.WorkflowStudio.Core.csproj", "{B95319B6-0759-4E8A-8C08-EA5FE8ABB66F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP.WorkflowStudio.Repositories", "WP.WorkflowStudio.Repositories\WP.WorkflowStudio.Repositories.csproj", "{7A66B4F4-B226-4B7F-918B-8A0A8653D677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP.WorkflowStudio.DataAccess", "WP.WorkflowStudio.DataAccess\WP.WorkflowStudio.DataAccess.csproj", "{33927A2A-6983-4399-B66B-C865826F5DFF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WP.WorkflowStudio.Visuals", "WP.WorkflowStudio.Visuals\WP.WorkflowStudio.Visuals.csproj", "{7B1A86CD-9EB9-4EA6-8F48-BFD3608EF517}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C28EEA6E-4A40-48F8-ABF1-5986FE26A41A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28EEA6E-4A40-48F8-ABF1-5986FE26A41A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28EEA6E-4A40-48F8-ABF1-5986FE26A41A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28EEA6E-4A40-48F8-ABF1-5986FE26A41A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95319B6-0759-4E8A-8C08-EA5FE8ABB66F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95319B6-0759-4E8A-8C08-EA5FE8ABB66F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95319B6-0759-4E8A-8C08-EA5FE8ABB66F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95319B6-0759-4E8A-8C08-EA5FE8ABB66F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A66B4F4-B226-4B7F-918B-8A0A8653D677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A66B4F4-B226-4B7F-918B-8A0A8653D677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A66B4F4-B226-4B7F-918B-8A0A8653D677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A66B4F4-B226-4B7F-918B-8A0A8653D677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33927A2A-6983-4399-B66B-C865826F5DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33927A2A-6983-4399-B66B-C865826F5DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33927A2A-6983-4399-B66B-C865826F5DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33927A2A-6983-4399-B66B-C865826F5DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1A86CD-9EB9-4EA6-8F48-BFD3608EF517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1A86CD-9EB9-4EA6-8F48-BFD3608EF517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1A86CD-9EB9-4EA6-8F48-BFD3608EF517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1A86CD-9EB9-4EA6-8F48-BFD3608EF517}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D981D4CC-63F2-44B8-9606-E6C3EA0CD009}
+	EndGlobalSection
+EndGlobal

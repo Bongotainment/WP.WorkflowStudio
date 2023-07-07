@@ -1,0 +1,57 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:menu="clr-namespace:WP.WorkflowStudio.Desktop.Views.Menu"
+             xmlns:viewModels="clr-namespace:WP.WorkflowStudio.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+             x:Class="WP.WorkflowStudio.Desktop.Views.Menu.WorkflowNavigation">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    <StackPanel Classes="Navigation">
+        <Grid ColumnDefinitions="45,1*" RowDefinitions="*,*" HorizontalAlignment="Stretch" Height="100"
+              Margin="2,0,0,0">
+            <Image Source="{SvgImage /Assets/images/clock.svg}" Grid.Column="0" Grid.RowSpan="2" />
+            <Label Classes="Time" Grid.Row="0" Grid.Column="1"
+                   Content="{Binding CurrentTime, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <Label Grid.Row="1" Grid.Column="1"
+                   Content="{Binding CurrentDate, Mode=TwoWay, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+        </Grid>
+        <StackPanel VerticalAlignment="Stretch">
+            <menu:MenuButton ImagePath="/Assets/images/all.svg" Color="{Binding Path=NamedCategoryColors[All]}"
+                             Text="Alle" ShortCut="" MenuButtonClickedCommand="{Binding AllWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/pricetag.svg"
+                             Color="{Binding Path=NamedCategoryColors[Article]}" Text="Artikel" ShortCut=""
+                             MenuButtonClickedCommand="{Binding ArticleWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/discount.svg"
+                             Color="{Binding Path=NamedCategoryColors[Procurement]}" Text="Beschaffung" ShortCut=""
+                             MenuButtonClickedCommand="{Binding ProcurementWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/personRound.svg"
+                             Color="{Binding Path=NamedCategoryColors[Customers]}" Text="Kunden" ShortCut=""
+                             MenuButtonClickedCommand="{Binding CustomerWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/nicebag.svg" Color="{Binding Path=NamedCategoryColors[Orders]}"
+                             Text="Aufträge" ShortCut=""
+                             MenuButtonClickedCommand="{Binding OrderWorkflowsClickedCommand}" />
+            <menu:MenuButton ImgMargin="0" ImagePath="/Assets/images/boxClosed.svg"
+                             Color="{Binding Path=NamedCategoryColors[Delivery]}" Text="Versand" ShortCut=""
+                             MenuButtonClickedCommand="{Binding DeliveryWorkflowsClickedCommand}" />
+            <menu:MenuButton ImgMargin="0" ImagePath="/Assets/images/returns.svg"
+                             Color="{Binding Path=NamedCategoryColors[Returns]}" Text="Retouren" ShortCut=""
+                             MenuButtonClickedCommand="{Binding ReturnsWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/wallet.svg" Color="{Binding Path=NamedCategoryColors[Invoice]}"
+                             Text="Rechnungen" ShortCut=""
+                             MenuButtonClickedCommand="{Binding InvoiceWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/list.svg" Color="{Binding Path=NamedCategoryColors[Picklist]}"
+                             Text="Picklisten" ShortCut=""
+                             MenuButtonClickedCommand="{Binding PicklistWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/percent.svg" Color="{Binding Path=NamedCategoryColors[Offer]}"
+                             Text="Angebote" ShortCut=""
+                             MenuButtonClickedCommand="{Binding OfferWorkflowsClickedCommand}" />
+            <menu:MenuButton ImagePath="/Assets/images/service.svg"
+                             Color="{Binding Path=NamedCategoryColors[Servicedesk]}" Text="Servicedesk" ShortCut=""
+                             MenuButtonClickedCommand="{Binding ServicedeskWorkflowsClickedCommand}" />
+        </StackPanel>
+    </StackPanel>
+
+</UserControl>

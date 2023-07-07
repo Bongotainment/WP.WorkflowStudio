@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia.Skia" Version="11.0.0-preview8"/>
+        <PackageReference Include="SkiaSharp.Svg" Version="1.60.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\WP.WorkflowStudio.Core\WP.WorkflowStudio.Core.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\Images\freeze.svg"/>
+        <AvaloniaResource Include="Assets\Images\clock.svg"/>
+        <AvaloniaResource Include="Assets\Images\freeze.svg"/>
+        <None Remove="Assets\Images\clock.svg"/>
+    </ItemGroup>
+
+</Project>

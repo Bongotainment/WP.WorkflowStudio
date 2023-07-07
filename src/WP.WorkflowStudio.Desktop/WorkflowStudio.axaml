@@ -1,0 +1,139 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cc="clr-namespace:AvaloniaEdit.CodeCompletion;assembly=AvaloniaEdit"
+        xmlns:canvas="clr-namespace:WP.WorkflowStudio.Visuals.Canvas;assembly=WP.WorkflowStudio.Visuals">
+    <FluentTheme />
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+    <Styles.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="BackgroundColor">#232323</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonColor">#363636</SolidColorBrush>
+            <SolidColorBrush x:Key="ButtonBorderColor">#4A4A4A</SolidColorBrush>
+
+            <Color x:Key="CanvasBackgroundColor">#232323</Color>
+        </ResourceDictionary>
+    </Styles.Resources>
+
+
+    <Style Selector="Panel.WindowFrame">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}" />
+    </Style>
+    <Style Selector="Button.MenuButton">
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="{StaticResource ButtonColor}" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+    <Style Selector="Button.MenuButton Label.MenuButton">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    <Style Selector="Button.MenuButton Border.MenuButton">
+        <Setter Property="Margin" Value="10" />
+        <Setter Property="Width" Value="21" />
+        <Setter Property="Height" Value="21" />
+        <Setter Property="Background" Value="{StaticResource ButtonBorderColor}" />
+    </Style>
+    <Style Selector="StackPanel.Navigation">
+        <Setter Property="VerticalAlignment" Value="Stretch" />
+        <Setter Property="Orientation" Value="Vertical" />
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}" />
+    </Style>
+    <Style Selector="StackPanel.Navigation Label.Time">
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+    </Style>
+    <Style Selector="StackPanel.Navigation Label.Date">
+        <Setter Property="Foreground" Value="Gray" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Top" />
+    </Style>
+
+    <Style Selector="StackPanel.Navigation GridSplitter">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}" />
+    </Style>
+
+
+    <!-- <Style Selector="TabControl"> -->
+    <!--     <Setter Property="Background" Value="Navy"/> -->
+    <!-- </Style> -->
+    <!-- <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter"> -->
+    <!--     <Setter Property="Background" Value="Blue"/> -->
+    <!-- </Style> -->
+    <!-- <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter"> -->
+    <!--     <Setter Property="Background" Value="White"/> -->
+    <!--     <Setter Property="BorderBrush" Value="Black"/> -->
+    <!-- </Style> -->
+
+    <Style Selector="TabControl WrapPanel">
+        <Setter Property="MaxHeight" Value="20" />
+        <Setter Property="Margin" Value="0,5,0,0" />
+    </Style>
+
+
+    <Style Selector="TabItem">
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0 0 0 0" />
+        <Setter Property="Padding" Value="10 0" />
+        <Setter Property="BorderThickness" Value="0 0 0 0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="TabItem > TextBlock">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+        <Setter Property="IsVisible" Value="False" />
+    </Style>
+
+    <Style Selector="TabItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+
+    <Style Selector="UserControl">
+        <Setter Property="Background" Value="{StaticResource BackgroundColor}" />
+    </Style>
+
+
+    <Style Selector="cc|CompletionList">
+        <Setter Property="Template">
+            <ControlTemplate>
+                <cc:CompletionListBox Name="PART_ListBox" Background="White" Foreground="Black" BorderThickness="1"
+                                      BorderBrush="Black">
+                    <cc:CompletionListBox.ItemTemplate>
+                        <DataTemplate x:DataType="cc:ICompletionData">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Height="18"
+                                        HorizontalAlignment="Stretch">
+                                <Image Source="{Binding Image}"
+                                       Width="15"
+                                       Height="15" />
+                                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Content}"
+                                           FontSize="15" FontFamily="Consolas" Foreground="Black" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </cc:CompletionListBox.ItemTemplate>
+                </cc:CompletionListBox>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="canvas|CanvasControl">
+        <Setter Property="HasCustomConditionColor" Value="CornflowerBlue" />
+        <Setter Property="IsCustomWorkflowColor" Value="GreenYellow" />
+        <Setter Property="WorkflowInactiveColor" Value="LightGray" />
+        <Setter Property="TextColor" Value="Black" />
+    </Style>
+
+</Styles>

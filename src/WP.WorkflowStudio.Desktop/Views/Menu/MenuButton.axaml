@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:WP.WorkflowStudio.Desktop.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="45"
+             x:Class="WP.WorkflowStudio.Desktop.Views.Menu.MenuButton">
+    <Design.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Design.DataContext>
+    <Button Classes="MenuButton"
+            Click="Button_OnClick">
+        <Grid ColumnDefinitions="45,1*,21" HorizontalAlignment="Stretch">
+            <!-- <Rectangle Grid.Column="0" Fill="{Binding Color, RelativeSource={RelativeSource AncestorType=UserControl}}"  Width="45" Height="45" Margin="0"/> -->
+            <Border Grid.Column="0"
+                    Background="{Binding Color, RelativeSource={RelativeSource AncestorType=UserControl}}" Width="45"
+                    Height="45" Margin="0">
+                <Svg Path="{Binding ImagePath, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                     Margin="{Binding ImgMargin, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            </Border>
+            <Label Classes="MenuButton"
+                   Grid.Column="1"
+                   Content="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            <Border Classes="MenuButton"
+                    Grid.Column="2">
+                <Label FontSize="10" Foreground="#767677" VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Content="{Binding ShortCut, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+            </Border>
+        </Grid>
+    </Button>
+</UserControl>

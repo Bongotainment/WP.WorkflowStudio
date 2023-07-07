@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customWorkflows="clr-namespace:WP.WorkflowStudio.Desktop.ViewModels.CustomWorkflows"
+        mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="125"
+        Width="640"
+        Height="125"
+        x:Class="WP.WorkflowStudio.Desktop.Views.CustomWorkflows.Dialogs.AddProcedureDialog"
+        Title="Procedure Hinzufuegen"
+        CanResize="False"
+        Background="#232323"
+        SystemDecorations="BorderOnly"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        WindowStartupLocation="CenterOwner">
+    <Design.DataContext>
+        <customWorkflows:WorkflowProcedure />
+    </Design.DataContext>
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="0">
+            <Label>Aktionsname</Label>
+            <TextBox
+                HorizontalAlignment="Stretch"
+                Name="Action_Name"
+                Text="{Binding Name}" />
+        </StackPanel>
+        <StackPanel Margin="10"
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3">
+            <Label>Anzeigename</Label>
+            <TextBox HorizontalAlignment="Stretch"
+                     Name="Action_DisplayName"
+                     Text="{Binding DisplayName}" />
+        </StackPanel>
+        <Button Margin="10"
+                Grid.Row="1"
+                Grid.Column="2"
+                Command="{Binding SaveClickedCommand}"
+                Content="Speichern" />
+        <Button Margin="10"
+                Grid.Row="1"
+                Grid.Column="3"
+                Command="{Binding CloseClickedCommand}"
+                Content="Abbrechen" />
+    </Grid>
+
+</Window>

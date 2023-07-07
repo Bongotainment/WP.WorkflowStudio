@@ -1,0 +1,96 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:customWorkflows="clr-namespace:WP.WorkflowStudio.Desktop.ViewModels.CustomWorkflows"
+        mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="250"
+        Width="640"
+        Height="250"
+        x:Class="WP.WorkflowStudio.Desktop.Views.CustomWorkflows.Dialogs.AddParameterDialog"
+        Title="AddParameterDialog"
+        CanResize="False"
+        Background="#232323"
+        SystemDecorations="BorderOnly"
+        TransparencyLevelHint="AcrylicBlur"
+        ExtendClientAreaToDecorationsHint="True"
+        WindowStartupLocation="CenterOwner">
+    <Design.DataContext>
+        <customWorkflows:WorkflowParameter />
+    </Design.DataContext>
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <TextBox IsReadOnly="True"
+                 Margin="10"
+                 Grid.Row="0"
+                 Grid.Column="0"
+                 Grid.ColumnSpan="4"
+                 Background="{StaticResource BackgroundColor}">
+            <TextBox.Text>
+                <MultiBinding StringFormat="@{0}">
+                    <Binding Path="#Parameter_ActionName.Text" />
+                </MultiBinding>
+            </TextBox.Text>
+        </TextBox>
+        <StackPanel Margin="10"
+                    Grid.Row="1"
+                    Grid.Column="0">
+            <Label>Datentyp</Label>
+            <ComboBox SelectedIndex="0"
+                      HorizontalAlignment="Stretch"
+                      Name="Parameter_Datatype"
+                      ItemsSource="{Binding AllowedDatatypes}"
+                      SelectedItem="{Binding AllowedDatatype}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Text}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Margin="10"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3">
+            <Label>Parametername</Label>
+            <TextBox HorizontalAlignment="Stretch"
+                     Name="Parameter_ActionName"
+                     Text="{Binding Name}" />
+        </StackPanel>
+        <StackPanel Margin="10"
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="4">
+            <Label>Anzeigename</Label>
+            <TextBox HorizontalAlignment="Stretch"
+                     Name="Parameter_DisplayName"
+                     Text="{Binding DisplayName}" />
+        </StackPanel>
+
+        <Button Margin="10"
+                Grid.Row="3"
+                Grid.Column="2"
+                VerticalAlignment="Bottom"
+                Command="{Binding SaveClickedCommand}"
+                Content="Speichern" />
+        <Button Margin="10"
+                Grid.Row="3"
+                Grid.Column="3"
+                VerticalAlignment="Bottom"
+                Command="{Binding CloseClickedCommand}"
+                Content="Abbrechen" />
+
+    </Grid>
+
+</Window>

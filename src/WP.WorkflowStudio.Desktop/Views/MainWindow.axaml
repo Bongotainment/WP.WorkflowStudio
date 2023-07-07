@@ -1,0 +1,236 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:WP.WorkflowStudio.Desktop.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:menu="clr-namespace:WP.WorkflowStudio.Desktop.Views.Menu"
+        xmlns:canvas="clr-namespace:WP.WorkflowStudio.Visuals.Canvas;assembly=WP.WorkflowStudio.Visuals"
+        xmlns:customWorkflows="clr-namespace:WP.WorkflowStudio.Desktop.Views.CustomWorkflows"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="850"
+        x:Class="WP.WorkflowStudio.Desktop.Views.MainWindow"
+        Icon="/Assets/applogo.ico"
+        Title="WP.WorkflowStudio.Desktop"
+        TransparencyLevelHint="AcrylicBlur"
+        Background="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
+        Opened="TopLevel_OnOpened">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel />
+        <!-- <x:Arguments> -->
+        <!--     <vm:LoginWindowViewModel/> -->
+        <!-- </x:Arguments> -->
+    </Design.DataContext>
+
+    <Grid ShowGridLines="false">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*" MinWidth="46" />
+            <ColumnDefinition Width="6" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <menu:WorkflowNavigation Grid.Row="1" Grid.Column="0" />
+
+        <Panel Classes="WindowFrame" x:Name="panelLeft" Grid.Row="0" Grid.Column="0" />
+        <GridSplitter Grid.Row="0" Grid.Column="1" Width="6" Background="{StaticResource BackgroundColor}" />
+
+        <Panel Classes="WindowFrame" x:Name="panelRight" Grid.Row="0" Grid.Column="2" />
+        <GridSplitter Grid.Row="1" Grid.Column="1" Width="6" Background="{Binding ClickedColor}"
+                      ResizeDirection="Columns" />
+
+        <TabControl Grid.Column="2" Grid.Row="1"
+                    Margin="0" Padding="0"
+                    Background="{Binding ClickedColor}">
+            <TabItem VerticalContentAlignment="Center"
+                     Margin="0" Padding="10 0">
+                <TabItem.Header>
+                    <TextBlock Padding="0" Margin="0" VerticalAlignment="Center">Workflows</TextBlock>
+                </TabItem.Header>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.7*" />
+                        <ColumnDefinition Width="6" />
+                        <ColumnDefinition Width="Auto" MinWidth="100" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Row="0" Grid.Column="0" Margin="0" BorderThickness="0" BorderBrush="Black"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <canvas:CanvasControl Name="drawControl"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch"
+                                              ElementClickedCommand="{Binding DataContext.ElementClickedCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                              DataContext="{Binding WorkflowEvents}" />
+                    </Border>
+
+                    <GridSplitter Grid.Row="0" Grid.Column="1" Width="6" Background="{Binding ClickedColor}"
+                                  ResizeDirection="Columns" />
+
+                    <StackPanel Grid.Row="0" Grid.Column="2" Background="{StaticResource BackgroundColor}"
+                                HorizontalAlignment="Stretch">
+
+                        <!-- This Button will be added in the next version -->
+                        <Button IsVisible="False" Margin="10" Padding="0" Width="23" Height="23"
+                                Command="{Binding ToggleWorkflowProperties}">
+                            <Svg Path="{Binding SplitViewImagePath}"
+                                 Margin="3" />
+                        </Button>
+
+                        <Expander Margin="10"
+                                  HorizontalAlignment="Stretch"
+                                  IsVisible="{Binding !DataContext.IsPanelClosed, RelativeSource={RelativeSource AncestorType=Window}}">
+                            <Expander.Header>
+                                Workflow Settings
+                            </Expander.Header>
+                            <Grid ShowGridLines="False" DataContext="{Binding ClickedWorkflowPropertyGridElement}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.4*" MinWidth="46" />
+                                    <ColumnDefinition Width="0.6*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Content="Workflow" />
+
+                                <Label Grid.Row="0" Grid.Column="0" Content="Workflow"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ClickedFlow}"
+                                         IsReadOnly="True"
+                                         FontSize="12"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Stretch" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Content="Event"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ClickedFlowEventName}"
+                                         FontSize="12"
+                                         IsReadOnly="True"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Stretch" />
+
+
+                                <Label Grid.Row="2" Grid.Column="0" Content="Execute Delayed"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding ExecuteDelayed}"
+                                          FontSize="12"
+                                          IsEnabled="False"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Right" />
+
+                                <Label Grid.Row="3" Grid.Column="0" Content="Activated"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding Activated}"
+                                          FontSize="12"
+                                          IsEnabled="False"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Right" />
+
+                            </Grid>
+                        </Expander>
+
+                        <Expander Margin="10"
+                                  HorizontalAlignment="Stretch"
+                                  IsVisible="{Binding !DataContext.IsPanelClosed, RelativeSource={RelativeSource AncestorType=Window}}">
+                            <Expander.Header>
+                                Workflow Information
+                            </Expander.Header>
+                            <Grid ShowGridLines="False" DataContext="{Binding ClickedWorkflowPropertyGridElement}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0.4*" MinWidth="46" />
+                                    <ColumnDefinition Width="0.6*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" Content="Was executed in past"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding WasExecutedInPast}"
+                                          FontSize="12"
+                                          IsEnabled="False"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Right" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Content="Has custom condition"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding HasCustomCondition}"
+                                          FontSize="12"
+                                          IsEnabled="False"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Right" />
+
+                                <Label Grid.Row="2" Grid.Column="0" Content="Is custom workflow"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+                                <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding IsCustomWorkflow}"
+                                          FontSize="12"
+                                          IsEnabled="False"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Right" />
+                                <Label Grid.Row="3" Grid.Column="0" Content="Avarage runtime"
+                                       FontSize="12"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left" />
+
+                                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ClickedFlowAvarageRuntime}"
+                                         FontSize="12"
+                                         IsReadOnly="True"
+                                         VerticalAlignment="Center"
+                                         HorizontalAlignment="Stretch" />
+                            </Grid>
+                        </Expander>
+                    </StackPanel>
+
+                </Grid>
+            </TabItem>
+
+            <TabItem VerticalContentAlignment="Center"
+                     Margin="0" Padding="10 0">
+                <TabItem.Header>
+                    <TextBlock Padding="0" Margin="0" VerticalAlignment="Center">Custom Workflows</TextBlock>
+                </TabItem.Header>
+                <customWorkflows:WorkflowSqlControl DataContext="{Binding WorkflowSqlViewModel}"
+                                                    VerticalAlignment="Stretch"
+                                                    HorizontalAlignment="Stretch" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+
+
+</Window>
