@@ -220,15 +220,15 @@
                 </Grid>
             </TabItem>
 
-            <TabItem VerticalContentAlignment="Center"
-                     Margin="0" Padding="10 0">
-                <TabItem.Header>
-                    <TextBlock Padding="0" Margin="0" VerticalAlignment="Center">Custom Workflows</TextBlock>
-                </TabItem.Header>
-                <customWorkflows:WorkflowSqlControl DataContext="{Binding WorkflowSqlViewModel}"
-                                                    VerticalAlignment="Stretch"
-                                                    HorizontalAlignment="Stretch" />
-            </TabItem>
+            <!-- <TabItem VerticalContentAlignment="Center" -->
+            <!--          Margin="0" Padding="10 0"> -->
+            <!--     <TabItem.Header> -->
+            <!--         <TextBlock Padding="0" Margin="0" VerticalAlignment="Center">Custom Workflows</TextBlock> -->
+            <!--     </TabItem.Header> -->
+            <!--     <customWorkflows:WorkflowSqlControl DataContext="{Binding WorkflowSqlViewModel}" -->
+            <!--                                         VerticalAlignment="Stretch" -->
+            <!--                                         HorizontalAlignment="Stretch" /> -->
+            <!-- </TabItem> -->
         </TabControl>
     </Grid>
 
