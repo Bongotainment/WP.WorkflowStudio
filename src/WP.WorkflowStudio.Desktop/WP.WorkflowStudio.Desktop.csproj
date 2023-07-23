@@ -10,9 +10,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="DataModels\"/>
-        <AvaloniaResource Include="Assets\**"/>
-        <None Remove=".gitignore"/>
+        <Folder Include="DataModels\" />
+        <AvaloniaResource Include="Assets\**" />
+        <None Remove=".gitignore" />
         <None Update="appsettings.json">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
@@ -25,30 +25,30 @@
     </ItemGroup>
 
     <ItemGroup>
-        <TrimmerRootDescriptor Include="Roots.xml"/>
+        <TrimmerRootDescriptor Include="Roots.xml" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.0-preview8"/>
-        <PackageReference Include="Avalonia.AvaloniaEdit" Version="11.0.0-preview8"/>
-        <PackageReference Include="Avalonia.Desktop" Version="11.0.0-preview8"/>
+        <PackageReference Include="Avalonia" Version="11.0.0-preview8" />
+        <PackageReference Include="Avalonia.AvaloniaEdit" Version="11.0.0-preview8" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.0.0-preview8" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0-preview8"/>
-        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0-preview8.2"/>
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0-preview8"/>
-        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.0-preview8"/>
-        <PackageReference Include="AvaloniaEdit.TextMate" Version="11.0.0-preview8"/>
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0"/>
-        <PackageReference Include="HtmlAgilityPack" Version="1.11.46"/>
-        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-preview.4.23259.5"/>
-        <PackageReference Include="Svg.Skia" Version="0.6.0-preview8.2"/>
-        <PackageReference Include="TextMateSharp.Grammars" Version="1.0.55"/>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-preview.4.23259.5"/>
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.4.23259.5"/>
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.0-preview8" />
+        <PackageReference Include="Avalonia.Svg.Skia" Version="11.0.0-preview8.2" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.0-preview8" />
+        <PackageReference Include="Avalonia.Xaml.Behaviors" Version="11.0.0-preview8" />
+        <PackageReference Include="AvaloniaEdit.TextMate" Version="11.0.0-preview8" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+        <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0-preview.4.23259.5" />
+        <PackageReference Include="Svg.Skia" Version="0.6.0-preview8.2" />
+        <PackageReference Include="TextMateSharp.Grammars" Version="1.0.55" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0-preview.4.23259.5" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0-preview.4.23259.5" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\WP.WorkflowStudio.Repositories\WP.WorkflowStudio.Repositories.csproj"/>
-        <ProjectReference Include="..\WP.WorkflowStudio.Visuals\WP.WorkflowStudio.Visuals.csproj"/>
+        <ProjectReference Include="..\WP.WorkflowStudio.Repositories\WP.WorkflowStudio.Repositories.csproj" />
+        <ProjectReference Include="..\WP.WorkflowStudio.Visuals\WP.WorkflowStudio.Visuals.csproj" />
     </ItemGroup>
 </Project>

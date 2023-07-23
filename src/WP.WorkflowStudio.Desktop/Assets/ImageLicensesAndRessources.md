@@ -19,3 +19,4 @@
 | https://www.iconfinder.com/icons/3209292/customer_headset_listen_service_support_icon               | service.svg      | Free for commercial use |
 | https://www.iconfinder.com/icons/290143/download/svg/4096                                           | wallet.svg       | Free for commercial use |
 | https://www.iconfinder.com/icons/2636392/download/svg/4096                                          | freeze.svg       | Free for commercial use |
+| https://www.iconfinder.com/icons/4092559/download/svg/4096                                          | magnifier.svg    | Free for commercial use |

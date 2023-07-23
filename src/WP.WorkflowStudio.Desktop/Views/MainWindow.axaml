@@ -23,7 +23,7 @@
         <!-- </x:Arguments> -->
     </Design.DataContext>
 
-    <Grid ShowGridLines="false">
+    <Grid ShowGridLines="true">
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
@@ -34,12 +34,17 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        
         <menu:WorkflowNavigation Grid.Row="1" Grid.Column="0" />
-
         <Panel Classes="WindowFrame" x:Name="panelLeft" Grid.Row="0" Grid.Column="0" />
         <GridSplitter Grid.Row="0" Grid.Column="1" Width="6" Background="{StaticResource BackgroundColor}" />
 
-        <Panel Classes="WindowFrame" x:Name="panelRight" Grid.Row="0" Grid.Column="2" />
+        <Panel Classes="WindowFrame" x:Name="panelRight" Grid.Row="0" Grid.Column="2" >
+            <Button HorizontalAlignment="Right" Padding="3">
+                <Svg Path="/Assets/images/magnifier.svg"
+                     Margin="2" />
+            </Button>
+        </Panel>
         <GridSplitter Grid.Row="1" Grid.Column="1" Width="6" Background="{Binding ClickedColor}"
                       ResizeDirection="Columns" />
 
