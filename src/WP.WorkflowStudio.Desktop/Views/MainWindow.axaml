@@ -40,7 +40,8 @@
         <GridSplitter Grid.Row="0" Grid.Column="1" Width="6" Background="{StaticResource BackgroundColor}" />
 
         <Panel Classes="WindowFrame" x:Name="panelRight" Grid.Row="0" Grid.Column="2" >
-            <Button HorizontalAlignment="Right" Padding="3">
+            <Button HorizontalAlignment="Right" Padding="3"  
+                    Command="{Binding ShowSearchDialogCommand}">
                 <Svg Path="/Assets/images/magnifier.svg"
                      Margin="2" />
             </Button>

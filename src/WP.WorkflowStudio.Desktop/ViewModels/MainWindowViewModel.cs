@@ -216,4 +216,11 @@ public partial class MainWindowViewModel : ViewModelBase
             this.WorkflowEvents = WorkflowEvents;
         }
     }
+    
+    
+    [RelayCommand]
+    private void ShowSearchDialog()
+    {
+        Console.WriteLine("Search clicked");
+    }
 }
