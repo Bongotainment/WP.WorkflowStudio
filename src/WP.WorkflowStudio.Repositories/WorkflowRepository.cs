@@ -97,12 +97,15 @@ public class WorkflowRepository
         return results.ToList();
     }
 
+    private Dictionary<int, List<String>> _workflowActionsCache = new Dictionary<int, List<String>>();
+    private Dictionary<int, List<String>> _workflowConditionsCache = new Dictionary<int, List<String>>();
+
     public IEnumerable<WorkflowEvent> GetWorkflows(int[] nObject)
     {
         var results = new List<WorkflowEvent>();
         var returnWorkflowEreignisNames = GetReturnWorkflows();
         var conditions = _workflowBedingungAccess.Get<TWorkflowBedingung>();
-
+        
         if (_cache == null || !_cache.Any())
         {
             _cache = new List<WorkflowEventCombination>();
@@ -120,6 +123,8 @@ public class WorkflowRepository
                 select new WorkflowEventCombination(flow, lEvent);
             _cache = query.ToList();
 
+            _workflowActionsCache = TransformActions(actions);
+            _workflowConditionsCache = TransformConditions(conditions);
             var logQuery = from log in logs
                 group log by log.KWorkflow
                 into g
@@ -152,6 +157,9 @@ public class WorkflowRepository
             workflow.HasCustomCondition = customConditions.Any(x => x.KWorkflow == workflow.WorkflowId);
             workflow.WasExecutedInPast = _logCache.Any(x => x.Key == workflow.WorkflowId);
 
+            FillWorkflowActionTexts(workflow);
+            FillWorkflowConditionTexts(workflow);
+            
             if (_customWorkflows != null)
                 workflow.IsCustomWorkflow = _customWorkflows.Any(x => x.Key == workflow.WorkflowId);
 
@@ -178,6 +186,60 @@ public class WorkflowRepository
             AddWorkflowConnections(results.ToList<IConnectionEnd>(), _workflowEventConnections);
         return results;
     }
+
+    private void FillWorkflowConditionTexts(Workflow workflow)
+    {
+        foreach (var (workflowId, conditionTexts) in _workflowConditionsCache)
+        {
+            if (workflowId == workflow.WorkflowId)
+            {
+                foreach (string text in conditionTexts)
+                {
+                    workflow.AddSearchableConditionsText(text);
+                }
+            }
+        }
+    }
+
+    private void FillWorkflowActionTexts(Workflow workflow)
+    {
+        foreach (var (workflowId, actionTexts) in _workflowActionsCache)
+        {
+            if (workflowId == workflow.WorkflowId)
+            {
+                foreach (string text in actionTexts)
+                {
+                    workflow.AddSearchableActionText(text);
+                }
+            }
+        }
+    }
+
+    private Dictionary<int,List<string>> TransformActions(IEnumerable<TWorkflowAktion> actions)
+    {
+        var result = actions.GroupBy(x => x.KWorkflow);
+        Dictionary<int, List<string>> returnValue = result.ToDictionary(obj => obj.Key, obj => obj.Select(x => x.XXmlObjekt).ToList());
+        return returnValue;
+    }
+    
+    private Dictionary<int,List<string>> TransformConditions(IEnumerable<TWorkflowBedingung> conditions)
+    {
+        var grouped = conditions.GroupBy(x => x.KWorkflow);
+        Dictionary<int, List<string>> returnValue = grouped.ToDictionary(obj => obj.Key, obj => obj.Select(x => x.CEigenschaft).ToList());
+        Dictionary<int, List<string>?> returnValue2 = grouped.ToDictionary(obj => obj.Key, obj => obj.Select(x => x.CVergleichswert).ToList());
+
+        foreach (var kvp in returnValue)
+        {
+            List<string>? foundValues;
+            if (returnValue2.TryGetValue(kvp.Key, out foundValues))
+            {
+                if (foundValues != null) 
+                    returnValue[kvp.Key].AddRange(foundValues);
+            }
+        }
+        return returnValue;
+    }
+    
 
     private static List<TWorkflowBedingung> FilterCustomConditionsFromConditions(
         IEnumerable<TWorkflowBedingung> conditions)
